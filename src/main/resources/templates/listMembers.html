@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 스타일 정의는 동일하게 유지 */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .add-button {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+      <tr th:each="member : ${members}">
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.password}"></td>
+        <td>
+          <a th:href="@{/member/edit/{id}(id=${member.id})}">Edit</a>
+          <a
+            th:href="@{/member/del/{id}(id=${member.id})}"
+            onclick="return confirm('Are you sure?')"
+            >Delete</a
+          >
+        </td>
+      </tr>
+    </table>
+    <div class="add-button">
+      <a href="/member/add">Add Member</a>
+    </div>
+  </body>
+</html>

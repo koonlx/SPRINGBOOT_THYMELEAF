@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form th:action="@{/member/edit}" method="post">
+      <input type="hidden" name="id" th:value="${member.id}" />
+      Email: <input type="text" name="email" th:value="${member.email}" /><br />
+      Password:
+      <input type="password" name="password" th:value="${member.password}" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
